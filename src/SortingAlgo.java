@@ -11,13 +11,53 @@ public class SortingAlgo {
                 }
             }
         }
+    }
+
+    //print Arr
+    public static void printArr(int arr[]){
         for(int i=0; i<arr.length; i++){
             System.out.print(arr[i]);
+        }
+        System.out.println();
+    }
+
+    //SELECTION SORT ALGO
+    public static void selectionSort(int arr[]){
+        for(int i=0; i<arr.length-1; i++){
+            int minPos = i;
+            for(int j=i+1; j<arr.length-1; j++){
+                if(arr[minPos] > arr[j]){
+                    minPos = j;
+                }
+            }
+            int temp = arr[minPos];
+            arr[minPos] = arr[i];
+            arr[i] = temp;
+        }
+    }
+
+    //BUBBLE SORT ALGO
+    public static void insertionSort(int arr[]){
+        for(int i=1; i<arr.length; i++){
+            int curr = arr[i];
+            int prev = i-1;
+            //finding out the correct position to insert
+            while (prev >= 0 && arr[prev] > curr){
+                arr[prev+1] = arr[prev];
+                prev--;
+            }
+            //insertion
+            arr[prev+1] = curr;
         }
     }
 
     public static void main(String[] args){
         int arr[] = {9,8,6,4,5,2,1};
         bubbleSort(arr);
+        printArr(arr);
+        selectionSort(arr);
+        printArr(arr);
+        insertionSort(arr);
+        printArr(arr);
     }
 }
