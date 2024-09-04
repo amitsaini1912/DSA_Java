@@ -21,8 +21,19 @@ public class Bits {
         }
     }
 
+    //set ith bit
+    public static int setBit(int num, int i){
+        int bitMask = 1<<(i-1);
+        return num | bitMask;
+    }
+    //clear ith bit
+    public static int clearBit(int num, int i){
+        int bitMask = ~(1<<(i-1));
+        return num & bitMask;
+    }
+
     public static void main(String[] args){
-        System.out.println(getBit(4,3));
+        System.out.println(clearBit(10,2));
         //System.out.println(isEven(7));
 
         //System.out.println(5&6);//3=011, 4=100, 5=101, 6=110  7=111,
