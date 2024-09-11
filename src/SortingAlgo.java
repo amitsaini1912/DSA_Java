@@ -36,7 +36,7 @@ public class SortingAlgo {
         }
     }
 
-    //BUBBLE SORT ALGO
+    //INSERTION SORT ALGO
     public static void insertionSort(int arr[]){
         for(int i=1; i<arr.length; i++){
             int curr = arr[i];
