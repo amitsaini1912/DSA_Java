@@ -31,6 +31,24 @@ public class TwoDArrays {
         return sum;
     }
 
+    //SERACH IN SORTED ARRAY
+    public static boolean serachInSortedArray(int matrix[][], int key){
+        int row = 0, col = matrix[0].length-1;
+
+        while (row < matrix.length && col >=0){
+            if(matrix[row][col] == key){
+                System.out.println("key found at (" + row + "," + col + ")");
+                return true;
+            } else if (key < matrix[row][col]) {
+                col --;
+            }else {
+                row ++;
+            }
+        }
+        System.out.println("Key not found!");
+        return false;
+    }
+
     //SPIRAL MATRIX
     public static void spiralMatrix(int matrix[][]){
         int n = matrix[0].length;
@@ -82,7 +100,9 @@ public class TwoDArrays {
         int newArr[][] = { {1 ,2, 3}, {4,5,6}, {7,8,9} };
 
         //spiralMatrix(arr);
-        System.out.println(diagonalSum(newArr));
+//        System.out.println(diagonalSum(newArr));
+        serachInSortedArray(newArr, 5);
+
 
 //        int newArr[][] = new int[3][3];
 //        Scanner sc = new Scanner(System.in);
