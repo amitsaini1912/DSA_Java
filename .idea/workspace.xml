@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10908c3-9ba7-404e-a23a-e51efb0aa4b9" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/OOPS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/BinaryTrees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Bits.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Bits.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OOPS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OOPS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Subarrays.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +28,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 3
 }</component>
@@ -34,18 +42,41 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ArrayList.executor": "Run",
     "Application.Bits.executor": "Run",
+    "Application.Conditional_std.executor": "Run",
+    "Application.Conditionalst.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.OOPS.executor": "Run",
+    "Application.Ram.executor": "Run",
+    "Application.Ram1.executor": "Run",
+    "Application.Ram2.executor": "Run",
+    "Application.RamIo.executor": "Run",
     "Application.SortingAlgo.executor": "Run",
     "Application.Strings.executor": "Run",
     "Application.TwoDArrays.executor": "Run",
+    "Application.loops.executor": "Run",
+    "Application.patternprinting.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/amitk/IdeaProjects/AlphaClassDSA/src/Main.java"
+    "onboarding.tips.debug.path": "C:/Users/amitk/IdeaProjects/AlphaClassDSA/untitled/src/Main.java"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="loops" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="loops" />
+      <module name="AlphaClassDSA" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.loops" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

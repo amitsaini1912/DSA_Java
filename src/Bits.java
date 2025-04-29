@@ -31,11 +31,23 @@ public class Bits {
         int bitMask = ~(1<<(i-1));
         return num & bitMask;
     }
+    //Update ith bit
+    public static int updateBit(int num, int i, int newBit){
+//        if(newBit == 0){
+//            return clearBit(num,i);
+//        }else{
+//            return setBit(num, i);
+//        }
+
+        int bitMask = 1<<(i-1);
+        return num | bitMask;
+    }
 
     public static void main(String[] args){
-        System.out.println(clearBit(10,2));
+//        System.out.println(clearBit(10,2));
         //System.out.println(isEven(7));
 
+        System.out.println(updateBit(5,2,1));
         //System.out.println(5&6);//3=011, 4=100, 5=101, 6=110  7=111,
 //        System.out.println(5|6);
 //        System.out.println(5^6);

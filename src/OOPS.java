@@ -5,8 +5,39 @@ public class OOPS {
        System.out.println(p1.getColor());
        p1.setTip(6);
        System.out.println(p1.getTip());
+
+       //Copy Constructor
+       Student s1 = new Student();
+       s1.name = "Amit";
+       s1.rollNo = 205;
+       s1.password = "xyz";
+
+       Student s2 = new Student(s1);
+
    }
 }
+
+class Student {
+    String name;
+    int rollNo;
+    String password;
+    int marks[];
+
+    Student(Student S1){
+
+    }
+
+    Student(){
+        System.out.println("constructor is called");
+    }
+    Student(String name){
+        this.name = name;
+    }
+    Student(int rollNo){
+        this.rollNo = rollNo;
+    }
+}
+
 
 class Pen {
     private String color;
@@ -27,12 +58,12 @@ class Pen {
 
 }
 
-class Student{
-    String name;
-    int age;
-    float percentage;
-
-    void calculateAge( int phy, int chem, int maths){
-        percentage = (phy + chem + maths) / 3;
-    }
-}
+//class Student{
+//    String name;
+//    int age;
+//    float percentage;
+//
+//    void calculateAge( int phy, int chem, int maths){
+//        percentage = (phy + chem + maths) / 3;
+//    }
+//}
