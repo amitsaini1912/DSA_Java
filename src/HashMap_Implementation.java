@@ -1,5 +1,5 @@
 import java.util.*;
-public class HashingClass {
+public class HashMap_Implementation {
     static class HashMap<K,V>{//Generic
         private class Node{
             K key;
