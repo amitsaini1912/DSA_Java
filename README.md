@@ -1,7 +1,7 @@
-# 💻 Daily DSA Practice
+# 💻 DSA Practice
 
-Welcome to my **Daily DSA (Data Structures and Algorithms) Practice Repository**!  
-Here, I consistently solve and push problems from platforms like **LeetCode**, **GeeksforGeeks**, **CodeStudio**, and more, using languages like **C++**, **JavaScript**, and **Python**.
+Welcome to my **DSA (Data Structures and Algorithms) Practice Repository**!  
+Here, I solve and push problems from platforms like **LeetCode**, **GeeksforGeeks**, **CodeStudio**, and more, using language JAVA.
 
 ---
 
@@ -11,15 +11,10 @@ This repository is created to:
 
 - 💡 Sharpen problem-solving skills
 - 🧠 Build a strong foundation in data structures and algorithms
-- 🔁 Develop consistency through daily practice
+- 🔁 Develop consistency through practice
 - 💼 Prepare for technical interviews and coding rounds
 
 ---
-
-## 📆 Daily Log Format
-
-Each day is recorded in its own folder (e.g., `Day01`, `Day02`, ...).  
-Inside each folder, you'll find:
 
 - ✅ Problem Statement (as a comment or `README.md`)
 - 🧠 Solution/Code
