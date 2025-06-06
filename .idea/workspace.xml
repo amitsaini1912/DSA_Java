@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e10908c3-9ba7-404e-a23a-e51efb0aa4b9" name="Changes" comment="first commit" />
+    <list default="true" id="e10908c3-9ba7-404e-a23a-e51efb0aa4b9" name="Changes" comment="first commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,9 +41,11 @@
     "Application.Bits.executor": "Run",
     "Application.Conditional_std.executor": "Run",
     "Application.Conditionalst.executor": "Run",
+    "Application.HashMap_Implementation.executor": "Run",
     "Application.HashingClass.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.OOPS.executor": "Run",
+    "Application.PQ_Implementation.executor": "Run",
     "Application.Ram.executor": "Run",
     "Application.Ram1.executor": "Run",
     "Application.Ram2.executor": "Run",
