@@ -1,7 +1,58 @@
 import java.util.ArrayList;
 
 public class Heap_Implementation {
-    static class Heap{
+
+    public static void heapify(int arr[], int i, int size){
+       int left = 2*i+1;
+       int right = 2*i+2;
+       int maxInt = i;
+
+       if(left<size && arr[left]>arr[maxInt]){
+           maxInt=left;
+       }
+
+       if(right<size &&  arr[right]>arr[maxInt]){
+           maxInt=right;
+       }
+
+       if(maxInt != i){
+           int temp = arr[i];
+           arr[i] = arr[maxInt];
+           arr[maxInt]=temp;
+
+           heapify(arr, maxInt, size);
+       }
+    }
+
+    public static void heapSort(int arr[]){
+        //step1 - build maxHeap
+        int n = arr.length;
+        for (int i=n/2; i>=0; i--){
+            heapify(arr, i, n);
+        }
+
+        //step2 - push largest at end
+        for (int i = n-1; i > 0 ; i--) {
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            heapify(arr, 0, i);
+        }
+    }
+
+    public static void main(String args[]){
+        int arr[]  = {1,2,5,3,4};
+        heapSort(arr);
+
+        //print
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+   /* static class Heap{
         ArrayList<Integer> arr = new ArrayList<>();
 
         public void add(int data){
@@ -25,7 +76,7 @@ public class Heap_Implementation {
             return arr.get(0);
         }
 
-        private void heapify(int i) {
+        /*private void heapify(int i) {
             int left = 2*i+1;
             int right = 2*i+2;
             int minIdx = i;
@@ -39,7 +90,7 @@ public class Heap_Implementation {
 
             if(minIdx != i){
                 int temp = arr.get(i);
-                arr.set(i, arr.get(minIdx));
+                arr.set(arr.get(i), arr.get(minIdx));
                 arr.set(arr.get(minIdx), temp);
 
                 heapify(minIdx);
@@ -50,7 +101,7 @@ public class Heap_Implementation {
 
          //step1 - swap first & last
             int temp = arr.get(0);
-            arr.set(0, arr.get(arr.size()-1));
+            arr.set(arr.get(0), arr.get(arr.size()-1));
             arr.set(arr.size()-1, temp);
 
          //step2 - delete last
@@ -65,17 +116,5 @@ public class Heap_Implementation {
             return arr.size() == 0;
         }
     }
-
-    public static void main(String args[]){
-        Heap h = new Heap();
-        h.add(3);
-        h.add(4);
-        h.add(1);
-        h.add(5);
-
-        while(!h.isEmpty()){
-            System.out.println(h.peek());
-//            h.remove();
-        }
-    }
+    */
 }
