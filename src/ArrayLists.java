@@ -9,6 +9,20 @@ public class ArrayLists {
         list.set(idx2, temp);
     }
 
+
+    //PAIR SUM PROBLEM
+    public static boolean isPairSumAvailable(ArrayList<Integer> list,int target){
+        int n = list.size();
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j < n; j++) {
+               if (list.get(i) + list.get(j) == target){
+                   return true;
+               }
+            }
+        }
+        return false;
+    }
+
     public static void main(String args[]){
         ArrayList<Integer> list = new ArrayList<>();
         list.add(2);
@@ -18,7 +32,10 @@ public class ArrayLists {
         list.add(6);
         System.out.println(list);
 
-        swap(list, 1,3);
-        System.out.println(list);
+//        swap(list, 1,3);
+//        System.out.println(list);
+
+        System.out.println(isPairSumAvailable(list, 14));
+
     }
 }
