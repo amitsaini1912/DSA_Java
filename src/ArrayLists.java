@@ -12,7 +12,8 @@ public class ArrayLists {
 
     //PAIR SUM PROBLEM
     public static boolean isPairSumAvailable(ArrayList<Integer> list,int target){
-        int n = list.size();
+        //BRUTE FORCE APPROACH
+        /*int n = list.size();
         for (int i = 0; i < n; i++) {
             for (int j = i+1; j < n; j++) {
                if (list.get(i) + list.get(j) == target){
@@ -20,22 +21,38 @@ public class ArrayLists {
                }
             }
         }
+        return false;*/
+        //TWO POINTER APPROACH
+        int lp = 0;
+        int rp = list.size()-1;
+
+        while(lp != rp){
+            int sum = list.get(lp)+list.get(rp);
+            if(sum == target){
+                return true;
+            }if (sum < target){
+                lp++;
+            }else{
+                rp--;
+            }
+        }
         return false;
     }
 
     public static void main(String args[]){
         ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
         list.add(2);
-        list.add(5);
-        list.add(9);
         list.add(3);
+        list.add(4);
+        list.add(5);
         list.add(6);
         System.out.println(list);
 
 //        swap(list, 1,3);
 //        System.out.println(list);
 
-        System.out.println(isPairSumAvailable(list, 14));
+        System.out.println(isPairSumAvailable(list, 11));
 
     }
 }
