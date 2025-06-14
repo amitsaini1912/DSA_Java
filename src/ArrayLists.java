@@ -10,6 +10,29 @@ public class ArrayLists {
     }
 
 
+    //CONTAINER WITH MOST WATER PROBLEM WITH TWO POINTR APPRAOCH
+    public static int storeWater(ArrayList<Integer> height){
+        int maxWater = 0;
+        int lp = 0;
+        int rp = height.size()-1;
+
+        while(lp<rp){
+            //calculate water
+            int ht = Math.min(height.get(lp),height.get(rp));
+            int width = rp-lp;
+            int currWater = ht*width;
+            maxWater = Math.max(currWater, maxWater);
+            //update pointer
+            if(height.get(lp)<height.get(rp))
+                lp++;
+            else
+                rp--;
+        }
+        return maxWater;
+    }
+
+
+
     //PAIR SUM PROBLEM FOR SORTED ARRAYLIST
     public static boolean isPairSum1(ArrayList<Integer> list,int target){
         //BRUTE FORCE APPROACH
@@ -67,18 +90,24 @@ public class ArrayLists {
 
     public static void main(String args[]){
         ArrayList<Integer> list = new ArrayList<>();
-        list.add(11);
-        list.add(15);
-        list.add(6);
+        list.add(1);
         list.add(8);
-        list.add(9);
-        list.add(10);
+        list.add(6);
+        list.add(2);
+        list.add(5);
+        list.add(4);
+        list.add(8);
+        list.add(3);
+        list.add(7);
+
         System.out.println(list);
+
+        System.out.println(storeWater(list));
 
 //        swap(list, 1,3);
 //        System.out.println(list);
 
-        System.out.println(isPairSum2(list, 100));
+//        System.out.println(isPairSum2(list, 100));
 
     }
 }
