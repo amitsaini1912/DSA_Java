@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10908c3-9ba7-404e-a23a-e51efb0aa4b9" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/src/LinkedLists_Implementation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArrayLists.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ArrayLists.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,38 +35,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ArrayList.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ArrayLists.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Arrays.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Backtacking.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Bits.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Conditional_std.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Conditionalst.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HashMap_Implementation.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HashingClass.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Heap_Implementation.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.OOPS.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PQ_Implementation.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Ram.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Ram1.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Ram2.executor&quot;: &quot;Run&quot;,
-    &quot;Application.RamIo.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SortingAlgo.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Strings.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TwoDArrays.executor&quot;: &quot;Run&quot;,
-    &quot;Application.array.executor&quot;: &quot;Run&quot;,
-    &quot;Application.loops.executor&quot;: &quot;Run&quot;,
-    &quot;Application.patternadvance.executor&quot;: &quot;Run&quot;,
-    &quot;Application.patternprinting.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/amitk/IdeaProjects/AlphaClassDSA/untitled/src/Main.java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ArrayList.executor": "Run",
+    "Application.ArrayLists.executor": "Run",
+    "Application.Arrays.executor": "Run",
+    "Application.Backtacking.executor": "Run",
+    "Application.Bits.executor": "Run",
+    "Application.Conditional_std.executor": "Run",
+    "Application.Conditionalst.executor": "Run",
+    "Application.HashMap_Implementation.executor": "Run",
+    "Application.HashingClass.executor": "Run",
+    "Application.Heap_Implementation.executor": "Run",
+    "Application.LinkedLists_Implementation.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.OOPS.executor": "Run",
+    "Application.PQ_Implementation.executor": "Run",
+    "Application.Ram.executor": "Run",
+    "Application.Ram1.executor": "Run",
+    "Application.Ram2.executor": "Run",
+    "Application.RamIo.executor": "Run",
+    "Application.SortingAlgo.executor": "Run",
+    "Application.Strings.executor": "Run",
+    "Application.TwoDArrays.executor": "Run",
+    "Application.array.executor": "Run",
+    "Application.loops.executor": "Run",
+    "Application.patternadvance.executor": "Run",
+    "Application.patternprinting.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "onboarding.tips.debug.path": "C:/Users/amitk/IdeaProjects/AlphaClassDSA/untitled/src/Main.java"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
