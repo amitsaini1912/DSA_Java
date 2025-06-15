@@ -71,12 +71,33 @@ public class LinkedLists_Implementation {
     }
 
 
+    //ROMOVE FROM START IN LINKEDLIST
+    public static int removeFirst(){
+        if(size == 0){
+            System.out.println("LL is empty");
+            return -1;
+        }
+        if(size == 1){
+            size--;
+            int val = head.data;
+            head = tail = null;
+            return val;
+        }
+        size--;
+        int val = head.data;
+        head = head.next;
+        return val;
+    }
+
     public static void main(String args[]){
         //LinkedList ll = new LinkedList();
         LinkedLists_Implementation ll = new LinkedLists_Implementation();
         ll.addLast(1);
         ll.addLast(2);
         ll.add(2,4);
+        ll.print();
+        System.out.println(ll.size);
+        ll.removeFirst();
         ll.print();
         System.out.println(ll.size);
     }
