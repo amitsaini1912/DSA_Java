@@ -30,6 +30,10 @@ public class LinkedLists_Implementation {
     }
     //ADD AT Kth IDX IN A LINKEDLIST
     public void add(int idx, int data){
+        if (idx==0){
+            addFirst(data);
+            return;
+        }
         Node newNode = new Node(data);
         int i = 0;
         Node temp = head;
