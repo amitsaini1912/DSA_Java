@@ -112,6 +112,20 @@ public class LinkedLists_Implementation {
         return val;
     }
 
+
+    //SEARCH IN A LINKED LIST [ITERATIVE - LINEAR SEARCH]
+    public static int iterativeSearch(int key){
+        int i = 0;
+        Node temp = head;
+        while (temp != null){
+            if(temp.data == key)
+                return i;
+            temp = temp.next;
+            i++;
+        }
+        return -1;
+    }
+
     public static void main(String args[]){
         //LinkedList ll = new LinkedList();
         LinkedLists_Implementation ll = new LinkedLists_Implementation();
@@ -119,9 +133,6 @@ public class LinkedLists_Implementation {
         ll.addLast(2);
         ll.add(2,4);
         ll.print();
-        System.out.println(ll.size);
-        ll.removeLast();
-        ll.print();
-        System.out.println(ll.size);
+        System.out.println(iterativeSearch(4));
     }
 }
