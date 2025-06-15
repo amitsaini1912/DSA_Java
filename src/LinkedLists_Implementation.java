@@ -114,7 +114,7 @@ public class LinkedLists_Implementation {
 
 
     //SEARCH IN A LINKED LIST [ITERATIVE - LINEAR SEARCH]
-    public static int iterativeSearch(int key){
+    public static int itrSearch(int key){
         int i = 0;
         Node temp = head;
         while (temp != null){
@@ -125,6 +125,23 @@ public class LinkedLists_Implementation {
         }
         return -1;
     }
+    //SEARCH IN A LINKED LIST [RECURSIVE SEARCH]
+    public int helper(Node head, int key){
+        if(head == null){
+            return -1;
+        }
+        if(head.data == key){
+            return 0;
+        }
+        int idx = helper(head.next, key); //recursive func
+        if (idx ==-1){
+            return -1;
+        }
+        return idx+1; //Backtarcking step
+    }
+    public int recSearch(int key){
+        return helper(head, key);
+    }
 
     public static void main(String args[]){
         //LinkedList ll = new LinkedList();
@@ -133,6 +150,7 @@ public class LinkedLists_Implementation {
         ll.addLast(2);
         ll.add(2,4);
         ll.print();
-        System.out.println(iterativeSearch(4));
+        System.out.println(itrSearch(4));
+        System.out.println(ll.recSearch(4));
     }
 }
