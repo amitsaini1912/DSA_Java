@@ -176,17 +176,55 @@ public class LinkedLists_Implementation {
     }
 
 
+    //CHECK WHETHER A LL IS PALINDROM OR NOT
+    public Node findMid(){
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+        }
+        return slow;
+    }
+    public boolean isPalindrom(){
+        if (head==null || head.next == null)
+            return true;
+        //step1 - find mid
+        Node midNode = findMid();
+        //step2 - reverse 2nd half ll
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node right = prev;
+        Node left = head;
+        //step3 - check 1st half == 2nd half
+        while (right!=null){
+            if (left.data!=right.data)
+                return false;
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
+
+
     public static void main(String args[]){
         //LinkedList ll = new LinkedList();
         LinkedLists_Implementation ll = new LinkedLists_Implementation();
         ll.addLast(1);
         ll.addLast(2);
-        ll.addLast(4);
-        ll.addLast(5);
-        ll.addLast(6);
-        ll.add(2,3);
+        ll.addLast(1);
+//        ll.addLast(4);
+//        ll.addLast(5);
+//        ll.addLast(6);
+//        ll.add(2,3);
         ll.print();
-        ll.reveseLL();
-        ll.print();
+        System.out.println(ll.isPalindrom());
     }
 }
