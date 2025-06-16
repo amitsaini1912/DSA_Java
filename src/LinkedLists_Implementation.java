@@ -220,11 +220,52 @@ public class LinkedLists_Implementation {
         Node fast = head;
         while(fast!=null && fast.next!=null){
             slow = slow.next;
-            fast = fast.next;
+            fast = fast.next.next;
             if (slow==fast)
                 return true;
         }
         return false;
+    }
+
+
+    //REMOVE CYCLE/LOOP FROM A LL IF FOUND
+    public static void remCycle(){
+        //step1 check cycle present or not
+        boolean cycle = false;
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast==slow) {
+                cycle = true;
+                break;
+            }
+        }
+        if (cycle==false){
+            return;
+        }
+        //step2 - Rearrenge slow to head
+        slow = head;
+        //step3 - move fast and slow with +1 jump
+        Node prev = null;
+        while (slow != fast){
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        // Step 4: Remove cycle
+        if (prev != null) {
+            System.out.println("Breaking cycle at node with data: " + prev.data);
+            prev.next = null;
+        } else {
+            // Special case: cycle directly from tail to head
+            while (fast.next != slow) {
+                fast = fast.next;
+            }
+            System.out.println("Breaking cycle at node with data: " + fast.data);
+            fast.next = null;
+        }
     }
 
     public static void main(String args[]){
@@ -233,6 +274,8 @@ public class LinkedLists_Implementation {
         head.next = new Node(2);
         head.next.next = new Node(3);
         head.next.next.next = head;
+        System.out.println(iscycle());
+        remCycle();
         System.out.println(iscycle());
         //     LinkedLists_Implementation ll = new LinkedLists_Implementation();
 //        ll.addLast(2);
