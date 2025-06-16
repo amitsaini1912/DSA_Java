@@ -143,14 +143,34 @@ public class LinkedLists_Implementation {
         return helper(head, key);
     }
 
+
+    //FIND AND DELETE Nth NODE FROM END IN LL
+    public static int delNthFromEnd(int n){
+        //step1 - find prev(temp)
+        int i = 0;
+        Node temp = head;
+        while(i<size-n-1){
+            temp = temp.next;
+            i++;
+        }
+        //step2 - prev.next = prev.next.next
+        int val = temp.next.data;
+        temp.next = temp.next.next;
+        return val;
+    }
+
+
     public static void main(String args[]){
         //LinkedList ll = new LinkedList();
         LinkedLists_Implementation ll = new LinkedLists_Implementation();
         ll.addLast(1);
         ll.addLast(2);
-        ll.add(2,4);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.addLast(6);
+        ll.add(2,3);
         ll.print();
-        System.out.println(itrSearch(4));
-        System.out.println(ll.recSearch(4));
+        System.out.println(delNthFromEnd(3));
+        ll.print();
     }
 }
