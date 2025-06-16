@@ -160,6 +160,22 @@ public class LinkedLists_Implementation {
     }
 
 
+    //REVERSE A LINKED LIST WITH ITERATIVE APPROACH
+    public void reveseLL(){
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
+
     public static void main(String args[]){
         //LinkedList ll = new LinkedList();
         LinkedLists_Implementation ll = new LinkedLists_Implementation();
@@ -170,7 +186,7 @@ public class LinkedLists_Implementation {
         ll.addLast(6);
         ll.add(2,3);
         ll.print();
-        System.out.println(delNthFromEnd(3));
+        ll.reveseLL();
         ll.print();
     }
 }
