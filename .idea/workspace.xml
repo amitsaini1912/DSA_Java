@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10908c3-9ba7-404e-a23a-e51efb0aa4b9" name="Changes" comment="first commit">
-      <change afterPath="$PROJECT_DIR$/src/Stack_Implementation_ArrayLists.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_09-06-2025_11_52_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Stack_Implementation_LinkedList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,7 @@
     "Application.RamIo.executor": "Run",
     "Application.SortingAlgo.executor": "Run",
     "Application.Stack_Implementation_ArrayLists.executor": "Run",
+    "Application.Stack_Implementation_LinkedList.executor": "Run",
     "Application.Strings.executor": "Run",
     "Application.TwoDArrays.executor": "Run",
     "Application.array.executor": "Run",
