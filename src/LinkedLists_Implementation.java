@@ -318,6 +318,48 @@ public class LinkedLists_Implementation {
     }
 
 
+    //ZIG-ZAG LINKED LIST (ARRAGE LINKED LIST IN ZIG ZAG FORM)
+    private Node reverseLL(Node head){
+        Node prev = null;
+        Node curr = head;
+        Node next;
+        while (curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return head = prev;
+    }
+    public void zigzagLL(){
+        //step1 - find mid (slow fast Approach)
+        Node slow = head;
+        Node fast = head.next;
+        while(fast!=null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node midNode = slow;
+
+        //step2 - reverse 2nd half
+        Node reversedLLHead = reverseLL(midNode.next);
+        midNode.next = null;
+        //step3 - Alternate Add
+        Node LH = head;
+        Node RH = reversedLLHead;
+        Node nextL, nextR;
+        while (LH!=null && RH!=null){
+            nextL = LH.next;
+            LH.next = RH;
+            nextR = RH.next;
+            RH.next = nextL;
+            //update pointers
+            RH = nextR;
+            LH = nextL;
+        }
+    }
+
+
     public static void main(String args[]){
         //LinkedList ll = new LinkedList();
         LinkedLists_Implementation ll = new LinkedLists_Implementation();
@@ -327,7 +369,7 @@ public class LinkedLists_Implementation {
         ll.addLast(1);
         ll.add(2,3);
         ll.print();
-        ll.head = ll.mergeSort(ll.head);
+        ll.zigzagLL();
         ll.print();
     }
 }
