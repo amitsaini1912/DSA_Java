@@ -49,7 +49,7 @@ This repository is created to:
 
 ---
 
-## 🔧 Tech Stack
+## 🔧 Tech Stack_P
 
 - Language: `Java`
 - IDE: IntelliJ IDEA
