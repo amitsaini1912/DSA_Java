@@ -112,8 +112,33 @@ public class Stack_P {
     }
 
 
+    //CHECK WHETHER DUPLICATE PARENTHESES PRSENT OR NOT
+    public static boolean duplicateParentheses(String str){
+        Stack <Character> s = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            //if closing parentheses comes compiar with top and pop
+                if (ch==')') {
+                    int count = 0;
+                    while (s.peek() != '(') {
+                        s.pop();
+                        count++;
+                    }
+                    if (count < 1) //duplicate found
+                        return true;
+                    else
+                        s.pop(); //pop '(' also from stack
+                }else {
+                    s.push(ch); //Move opening backets, operents and operators in stack
+                }
+
+        }
+        return false;
+    }
+
+
     public static void main(String args[]){
-        String str = "{[()]}";
-        System.out.println(validParentheses(str));
+        String str = "((a+b)-(d*c))";
+        System.out.println(duplicateParentheses(str));
     }
 }
