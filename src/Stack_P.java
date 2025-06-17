@@ -62,22 +62,33 @@ public class Stack_P {
     }
 
 
-    public static void main(String args[]){
-        int stocks[] = {100,80,60,70,60,85,100};
-        int span[] = new int[stocks.length];
-        stackSpan(stocks,span);
-        for (int i = 0; i < span.length; i++) {
-            System.out.print(span[i] + " ");
-        }
-//        Stack<Integer> s = new Stack<>();
-//        s.push(1);
-//        s.push(2);
-//        s.push(3);
-//
-//        reverseStack(s);
-//        while(!s.isEmpty()){
-//            System.out.println(s.pop());
-//        }
+    //NEXT GREATER ELEMENT PROBLEM
+    public static void nextGreater(int arr[], int nextGreater[]){
+        int n = arr.length;
+        Stack s = new Stack<>();
+        nextGreater[n-1] = -1;
+        s.push(n-1);
 
+        for (int i = n-2; i >= 0; i--) {
+            int currElement = arr[i];
+            while (!s.isEmpty() && currElement>arr[(int)s.peek()]){
+                s.pop();
+            }
+            if (s.isEmpty()){
+                nextGreater[i] = -1;
+            }else{
+                nextGreater[i] = arr[(int)s.peek()];
+            }
+            s.push(i);
+        }
+    }
+
+    public static void main(String args[]){
+        int arr[] = {6,8,0,1,3};
+        int nextG[] = new int[arr.length];
+        nextGreater(arr,nextG);
+        for (int i = 0; i < nextG.length; i++) {
+            System.out.print(nextG[i] + " ");
+        }
     }
 }
