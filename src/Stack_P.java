@@ -39,16 +39,45 @@ public class Stack_P {
         pushAtBootom(s,top);
     }
 
-    public static void main(String args[]){
-        Stack<Integer> s = new Stack<>();
-        s.push(1);
-        s.push(2);
-        s.push(3);
 
-        reverseStack(s);
-        while(!s.isEmpty()){
-            System.out.println(s.pop());
+    //STOCK SPAN PROBLEM USING STACK [TC->O(n)]
+    public static void stackSpan(int stocks[], int span[]){
+        Stack s = new Stack<>();
+        span[0] = 1;
+        s.push(0);
+
+        for (int i = 1; i < stocks.length; i++) {
+            int currPrice = stocks[i];
+            while (!s.isEmpty() && currPrice>stocks[(int) s.peek()]){
+                s.pop();
+            }
+            if(s.isEmpty()){
+                span[i] = i;
+            }else{
+                int prevHigh = (int) s.peek();
+                span[i] = i-prevHigh;
+            }
+            s.push(i);
         }
+    }
+
+
+    public static void main(String args[]){
+        int stocks[] = {100,80,60,70,60,85,100};
+        int span[] = new int[stocks.length];
+        stackSpan(stocks,span);
+        for (int i = 0; i < span.length; i++) {
+            System.out.print(span[i] + " ");
+        }
+//        Stack<Integer> s = new Stack<>();
+//        s.push(1);
+//        s.push(2);
+//        s.push(3);
+//
+//        reverseStack(s);
+//        while(!s.isEmpty()){
+//            System.out.println(s.pop());
+//        }
 
     }
 }
