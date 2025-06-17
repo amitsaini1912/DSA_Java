@@ -83,12 +83,37 @@ public class Stack_P {
         }
     }
 
-    public static void main(String args[]){
-        int arr[] = {6,8,0,1,3};
-        int nextG[] = new int[arr.length];
-        nextGreater(arr,nextG);
-        for (int i = 0; i < nextG.length; i++) {
-            System.out.print(nextG[i] + " ");
+
+    //CHECK GIVEN PARENTHESES STRING IS VALID OR NOT
+    public static boolean validParentheses(String str){
+        Stack<Character> s = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            //Move opening parentheses in stack
+            if(ch=='(' || ch=='{' || ch=='['){
+                s.push(ch);
+            }
+            //if closing parentheses comes compiar with top
+            else {
+                if (s.isEmpty())
+                    return false;
+                if ( (ch==')' && (char)s.peek()=='(')
+                        || (ch=='}' && (char)s.peek()=='{')
+                        || (ch==']' && (char)s.peek()=='[')){
+                    s.pop();
+                }else
+                    return false;
+            }
         }
+        if (s.isEmpty())
+            return true;
+        else
+            return false;
+    }
+
+
+    public static void main(String args[]){
+        String str = "{[()]}";
+        System.out.println(validParentheses(str));
     }
 }
