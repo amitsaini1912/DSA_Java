@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.*;
 public class Stack_P {
 
@@ -137,8 +136,47 @@ public class Stack_P {
     }
 
 
+    //MAXIMUM RECTANGULAR AREA IN HISTOGRAM
+    private static void prevSmaller(int[] arr, int[] prevSmaller) {
+        Stack<Integer> s = new Stack<>();
+        for (int i = 0; i < arr.length; i++) {
+            while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+            prevSmaller[i] = s.isEmpty() ? -1 : s.peek();
+            s.push(i);
+        }
+    }
+    private static void nextSmaller(int[] arr, int[] nextSmaller) {
+        Stack<Integer> s = new Stack<>();
+        for (int i = arr.length - 1; i >= 0; i--) {
+            while (!s.isEmpty() && arr[s.peek()] >= arr[i]) {
+                s.pop();
+            }
+            nextSmaller[i] = s.isEmpty() ? arr.length : s.peek();
+            s.push(i);
+        }
+    }
+    public static int maxRecArea(int arr[]) {
+        int[] prevSmaller = new int[arr.length];
+        int[] nextSmaller = new int[arr.length];
+
+        prevSmaller(arr, prevSmaller);
+        nextSmaller(arr, nextSmaller);
+
+        int maxArea = 0;
+        for (int i = 0; i < arr.length; i++) {
+            int height = arr[i];
+            int width = nextSmaller[i] - prevSmaller[i] - 1;
+            int currArea = height * width;
+            maxArea = Math.max(currArea, maxArea);
+        }
+        return maxArea;
+    }
+
+
     public static void main(String args[]){
-        String str = "((a+b)-(d*c))";
-        System.out.println(duplicateParentheses(str));
+        int arr[] = {2,1,5,6,2,3};
+        System.out.println(maxRecArea(arr));
     }
 }
