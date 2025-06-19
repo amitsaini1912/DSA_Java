@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10908c3-9ba7-404e-a23a-e51efb0aa4b9" name="Changes" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/src/Queues_P.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Queue_Implementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Queue_Implementation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +56,7 @@
     "Application.PQ_Implementation.executor": "Run",
     "Application.Queue_Implementation.executor": "Run",
     "Application.Queue_Implementation_Arrays.executor": "Run",
+    "Application.Queues_P.executor": "Run",
     "Application.Ram.executor": "Run",
     "Application.Ram1.executor": "Run",
     "Application.Ram2.executor": "Run",
