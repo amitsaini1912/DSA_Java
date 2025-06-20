@@ -53,10 +53,24 @@ public class BinaryTrees {
         }
     }
 
+
+    //BINARY TREES: HEIGHT OF A TREES
+    public static int maxHeight(Node root){
+        //Base case
+        if (root==null)
+            return 0;
+        //Recursion
+        int leftH = maxHeight(root.left);
+        int rightH = maxHeight(root.right);
+        //Backtacking :- height returning step
+        return Math.max(leftH,rightH)+1;
+    }
+
+
     public static void main(String args[]){
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        levelUptraversal(root);
+        System.out.println(maxHeight(root));
     }
 }
