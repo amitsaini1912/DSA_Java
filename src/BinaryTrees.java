@@ -67,10 +67,23 @@ public class BinaryTrees {
     }
 
 
+    //BINARY TREES: SUM OF NODES OF A TREES
+    public static int totalNodes(Node root){
+        //Base case
+        if (root==null)
+            return 0;
+        //Recursion
+        int leftN = totalNodes(root.left);
+        int rightN = totalNodes(root.right);
+        //Backtacking :- height returning step
+        return leftN+rightN+1;
+    }
+
+
     public static void main(String args[]){
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        System.out.println(maxHeight(root));
+        System.out.println(totalNodes(root));
     }
 }
