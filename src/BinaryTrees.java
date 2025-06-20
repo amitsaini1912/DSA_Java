@@ -68,13 +68,26 @@ public class BinaryTrees {
 
 
     //BINARY TREES: SUM OF NODES OF A TREES
-    public static int totalNodes(Node root){
+    public static int sumOfNodes(Node root){
         //Base case
         if (root==null)
             return 0;
         //Recursion
-        int leftN = totalNodes(root.left);
-        int rightN = totalNodes(root.right);
+        int leftSum = sumOfNodes(root.left);
+        int rightSum = sumOfNodes(root.right);
+        //Backtacking :- height returning step
+        return leftSum+rightSum+root.data;
+    }
+
+
+    //BINARY TREES: COUNT OF NODES OF A TREES
+    public static int countOfNodes(Node root){
+        //Base case
+        if (root==null)
+            return 0;
+        //Recursion
+        int leftN = countOfNodes(root.left);
+        int rightN = countOfNodes(root.right);
         //Backtacking :- height returning step
         return leftN+rightN+1;
     }
@@ -84,6 +97,6 @@ public class BinaryTrees {
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        System.out.println(totalNodes(root));
+        System.out.println(sumOfNodes(root));
     }
 }
