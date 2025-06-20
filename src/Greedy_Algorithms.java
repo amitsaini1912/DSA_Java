@@ -45,7 +45,7 @@ public class Greedy_Algorithms {
             ratio[i][1] = val[i]/(double)weight[i];
         }
 
-        Arrays.sort(ratio, comparator.comparingDouble(o -> o[1]));
+        //Arrays.sort(ratio, Comparator.comparingDouble(o -> o[1]));
 
         int capacity = w;
         int finalVal = 0;
