@@ -250,6 +250,23 @@ public class BinaryTrees {
     }
 
 
+    //BINARY TREES: LOWEST COMMON ANCESTOR (Approach-2) => TC - O(n) SC - O(1)
+    public static Node lca2(Node root, int n1, int n2){
+        if (root==null || root.data==n1 || root.data==n2)
+            return root;
+
+        Node leftLcs = lca2(root.left, n1, n2);
+        Node rightLca = lca2(root.right, n1, n2);
+
+        if(leftLcs==null)
+            return rightLca;
+        if (rightLca==null)
+            return leftLcs;
+
+        return root;
+    }
+
+
     public static void main(String args[]){
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
@@ -272,6 +289,6 @@ public class BinaryTrees {
                   / \   \
                  4   5   7
          */
-        System.out.println(lca(root1,4,7));
+        System.out.println(lca2(root1,4,5).data);
     }
 }
