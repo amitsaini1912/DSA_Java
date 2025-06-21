@@ -108,7 +108,26 @@ public class BinaryTrees {
     }
 
 
+    //BINARY TREES: DIAMETER OF A TREE APPROACH 2 => O(n)
+    static class Info{
+        int ht;
+        int dia;
+        public Info(int h, int d){
+            this.ht = h;
+            this.dia = d;
+        }
+    }
+    public static Info diameter2(Node root){
+        if(root==null)
+           return new Info(0,0);
 
+        Object leftInfo = diameter2(root.left);
+        Object rightInfo = diameter2(root.right);
+
+        int dia = Math.max( Math.max( ((Info) leftInfo).dia, ((Info) rightInfo).dia ), ((Info) leftInfo).ht+ ((Info) rightInfo).ht + 1);
+        int ht = Math.max(((Info) leftInfo).ht,((Info) rightInfo).ht) + 1;
+        return new Info(dia,ht);
+    }
 
 
     public static void main(String args[]){
@@ -123,5 +142,6 @@ public class BinaryTrees {
                  4   5   7
          */
         System.out.println(diameter1(root));
+        System.out.println(diameter2(root).dia);
     }
 }
