@@ -130,18 +130,51 @@ public class BinaryTrees {
     }
 
 
+    public static boolean isIdentical(Node root, Node subRoot){
+        if(root==null && subRoot==null)
+            return true;
+        else if(root==null || subRoot==null || root.data!=subRoot.data)
+            return false;
+        if(!isIdentical(root.right, subRoot.right))
+            return false;
+        if (!isIdentical(root.left, subRoot.left))
+            return false;
+        return true;
+    }
+    //BINARY TREES: SUBTREE OF ANOTHER TREE
+    public static boolean isSubtree(Node root, Node subRoot){
+         if (root == null)
+             return false;
+         if(root.data==subRoot.data){
+             if(isIdentical(root, subRoot))
+                 return true;
+         }
+         return isSubtree(root.left, subRoot) || isSubtree(root.right, subRoot);
+    }
+
+
     public static void main(String args[]){
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
+
+        Node root1 = new Node(1);
+        root1.left = new Node(2);
+        root1.left.left = new Node(4);
+        root1.left.right = new Node(5);
+        root1.right = new Node(3);
+        root1.right.right = new Node(7);
+
+        Node subRoot = new Node(2);
+        subRoot.left = new Node(4);
+        subRoot.right = new Node(5);
         /*
-                     1
-                    / \
-                   2   3
+                     1                   2
+                    / \                 / \
+                   2   3               4   5
                   / \   \
                  4   5   7
          */
-        System.out.println(diameter1(root));
-        System.out.println(diameter2(root).dia);
+        System.out.println(isSubtree(root1,subRoot));
     }
 }
