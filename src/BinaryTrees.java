@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -153,6 +155,54 @@ public class BinaryTrees {
     }
 
 
+    //BINARY TREES: TOP VIEW OF A TREE
+    static class Inf{
+        Node node;
+        int hd;
+        public Inf(Node node , int hd){
+            this.node = node;
+            this.hd = hd;
+        }
+    }
+    public static void topView(Node root){
+        Queue <Inf> q = new LinkedList<>();
+        HashMap<Integer, Node> map = new HashMap<>();
+
+        int min = 0, max = 0;
+        q.add(new Inf(root, 0));
+        q.add(null);
+        while (!q.isEmpty()){
+            Inf currInfo = q.remove();
+            //check for null => queue is empty-> break
+            if(currInfo==null){
+                if(q.isEmpty())
+                    break;
+                else
+                    q.add(null);
+            }else {
+                //Key contains in map or not
+                if(!map.containsKey(currInfo.hd))
+                    map.put(currInfo.hd, currInfo.node);
+
+                //Add left & right child recursively in queue=
+                if(currInfo.node.left!=null){
+                    q.add(new Inf(currInfo.node.left, currInfo.hd-1));
+                    min = Math.min(min, currInfo.hd-1);
+                }
+                if(currInfo.node.right!=null){
+                    q.add(new Inf(currInfo.node.right, currInfo.hd+1));
+                    max = Math.max(max, currInfo.hd+1);
+                }
+            }
+        }
+        for (int i=min; i<=max; i++) {
+            if (map.containsKey(i)) {
+                System.out.print(map.get(i).data + " ");
+            }
+        }
+        System.out.println(" ");
+    }
+
     public static void main(String args[]){
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
@@ -175,6 +225,6 @@ public class BinaryTrees {
                   / \   \
                  4   5   7
          */
-        System.out.println(isSubtree(root1,subRoot));
+        topView(root);
     }
 }
