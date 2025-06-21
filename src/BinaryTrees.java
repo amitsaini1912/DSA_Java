@@ -93,10 +93,35 @@ public class BinaryTrees {
     }
 
 
+    //BINARY TREES: DIAMETER OF A TREE APPROACH 1 => O(n2)
+    public static int diameter1(Node root){
+        if (root==null){
+            return 0;
+        }
+
+        int leftD = diameter1(root.left);
+        int leftH = maxHeight(root.left);
+        int rightD = diameter1(root.right);
+        int rightH = maxHeight(root.right);
+
+        return Math.max(leftD,Math.max(rightD,leftH+rightH+1));
+    }
+
+
+
+
+
     public static void main(String args[]){
         int nodes[] = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1};
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
-        System.out.println(sumOfNodes(root));
+        /*
+                     1
+                    / \
+                   2   3
+                  / \   \
+                 4   5   7
+         */
+        System.out.println(diameter1(root));
     }
 }
