@@ -121,12 +121,12 @@ public class BinaryTrees {
         if(root==null)
            return new Info(0,0);
 
-        Object leftInfo = diameter2(root.left);
-        Object rightInfo = diameter2(root.right);
+        Info leftInfo = diameter2(root.left);
+        Info rightInfo = diameter2(root.right);
 
-        int dia = Math.max( Math.max( ((Info) leftInfo).dia, ((Info) rightInfo).dia ), ((Info) leftInfo).ht+ ((Info) rightInfo).ht + 1);
+        int dia = Math.max( Math.max( ((Info) leftInfo).dia, ((Info) rightInfo).dia ), (((Info) leftInfo).ht+ ((Info) rightInfo).ht + 1));
         int ht = Math.max(((Info) leftInfo).ht,((Info) rightInfo).ht) + 1;
-        return new Info(dia,ht);
+        return new Info(ht,dia);
     }
 
 
