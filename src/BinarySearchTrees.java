@@ -31,6 +31,18 @@ public class BinarySearchTrees {
     }
 
 
+    //BINARY SEARCH TREES: SEARCH IN A NODE IN BST
+    public static boolean searchNode(Node root, int k){
+        if (root==null) return false;
+        if (root.data==k) return true;
+        if (root.data>k)
+            return searchNode(root.left, k);
+        else
+            return searchNode(root.right, k);
+
+    }
+
+
     public static void main(String args[]){
         int values[] = {5,1,3,4,2,7};
         Node root = null;
@@ -38,6 +50,6 @@ public class BinarySearchTrees {
         for (int i = 0; i < values.length; i++) {
             root = insert(root,values[i]);
         }
-        inorderTraversal(root);
+        System.out.println(searchNode(root,4));
     }
 }
