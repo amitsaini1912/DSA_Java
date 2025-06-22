@@ -43,6 +43,37 @@ public class BinarySearchTrees {
     }
 
 
+    //BINARY SEARCH TREES: SEARCH & DELETE A NODE IN BST
+    public static Node findInOrderSuccessor(Node root){
+        while (root.left!=null){
+            root = root.left;
+        }
+        return root;
+    }
+    public static Node delete(Node root, int val){
+        if (root.data<val)
+            root.right = delete(root.right, val);
+        else if (root.data>val)
+            root.left = delete(root.left, val);
+        else {//voila
+            //Case1 - Leaf Node
+            if (root.right==null && root.left==null){
+                return null;
+            }
+            //Case2 - Single Child
+            if (root.left==null)
+                return root.right;
+            if (root.right==null)
+                return root.left;
+            //Case3 - Two Child
+            Node IS = findInOrderSuccessor(root.right);
+            root.data = IS.data;
+            root.right = delete(root.right, IS.data);
+        }
+        return root;
+    }
+
+
     public static void main(String args[]){
         int values[] = {5,1,3,4,2,7};
         Node root = null;
@@ -50,6 +81,9 @@ public class BinarySearchTrees {
         for (int i = 0; i < values.length; i++) {
             root = insert(root,values[i]);
         }
-        System.out.println(searchNode(root,4));
+        inorderTraversal(root);
+        System.out.println(" ");
+        delete(root,5);
+        inorderTraversal(root);
     }
 }
