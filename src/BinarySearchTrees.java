@@ -1,3 +1,4 @@
+import java.util.*;
 public class BinarySearchTrees {
     static class Node {
         int data;
@@ -90,15 +91,35 @@ public class BinarySearchTrees {
     }
 
 
+    //BINARY SEARCH TREES: PRINT ROOT TO LEAF PATHS IN BST
+    public static void printPath(ArrayList<Integer> path){
+        for (int i = 0; i < path.size(); i++) {
+            System.out.print(path.get(i)+ " ");
+        }
+        System.out.println(" ");
+    }
+    public static void printRoot2Leaf(Node root, ArrayList<Integer> path){
+        if (root==null)
+            return;
+
+        path.add(root.data);
+        if (root.left==null && root.right==null)
+            printPath(path);
+
+        printRoot2Leaf(root.left, path);
+        printRoot2Leaf(root.right, path);
+
+        path.remove(path.size()-1);
+    }
+
+
     public static void main(String args[]){
         int values[] = {5,1,3,4,2,7};
         Node root = null;
-
         for (int i = 0; i < values.length; i++) {
             root = insert(root,values[i]);
         }
-        inorderTraversal(root);
-        System.out.println(" ");
-        printInRange(root, 2,4);
+        ArrayList<Integer> path = new ArrayList<>();
+        printRoot2Leaf(root,path);
     }
 }
