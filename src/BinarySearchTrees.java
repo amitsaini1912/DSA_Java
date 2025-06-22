@@ -167,15 +167,40 @@ public class BinarySearchTrees {
     }
 
 
+    //BINARY SEARCH TREES: CONVERT BST TO A BALANCED BST
+    public static Node createBST2(ArrayList<Integer> AL, int st, int end){
+        if (st>end) return null;
+
+        int mid = (st+end)/2;
+        Node root = new Node(AL.get(mid));
+
+        root.left = createBST2(AL, st,mid-1);
+        root.right = createBST2(AL, mid+1, end);
+
+        return root;
+    }
+    public static ArrayList<Integer> findInOrderSec(Node root,ArrayList<Integer> inOrderSec){
+        if (root==null) return null;
+
+        findInOrderSec(root.left, inOrderSec);
+        inOrderSec.add(root.data);
+        findInOrderSec(root.right, inOrderSec);
+
+        return inOrderSec;
+    }
+    public static Node balancedBST(Node root){
+        ArrayList<Integer> inOrderSec = new ArrayList<>();
+        inOrderSec = findInOrderSec(root, inOrderSec);
+        return createBST2(inOrderSec, 0, inOrderSec.size()-1);
+    }
+
     public static void main(String args[]){
         int values[] = {3,5,6,8,10,11,12};
         Node root = null;
         for (int i = 0; i < values.length; i++) {
             root = insert(root,values[i]);
         }
-        Node newRoot = createBST(values, 0,6);
+        Node newRoot = balancedBST(root);
         preOrderTraversal(newRoot);
-        System.out.println();
-        System.out.println(isValidBST(newRoot, null,null));
     }
 }
