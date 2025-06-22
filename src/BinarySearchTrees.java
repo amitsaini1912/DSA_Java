@@ -30,6 +30,15 @@ public class BinarySearchTrees {
         System.out.print(root.data + " ");
         inorderTraversal(root.right);
     }
+    //BST: PreOrder Traversal
+    public static void preOrderTraversal(Node root){
+        if (root==null)
+            return;
+
+        System.out.print(root.data + " ");
+        inorderTraversal(root.left);
+        inorderTraversal(root.right);
+    }
 
 
     //BINARY SEARCH TREES: SEARCH IN A NODE IN BST
@@ -144,15 +153,29 @@ public class BinarySearchTrees {
     }
 
 
+    //BINARY SEARCH TREES: SORTED ARRAY TO BALANCED BST
+    public static Node createBST(int arr[], int st, int end){
+        if (st>end) return null;
+
+        int mid = (st+end)/2;
+        Node root = new Node(arr[mid]);
+
+        root.left = createBST(arr,st,mid-1);
+        root.right = createBST(arr, mid+1, end);
+
+        return root;
+    }
+
+
     public static void main(String args[]){
-        int values[] = {5,1,3,4,2,7};
+        int values[] = {3,5,6,8,10,11,12};
         Node root = null;
         for (int i = 0; i < values.length; i++) {
             root = insert(root,values[i]);
         }
-        inorderTraversal(root);
-        System.out.println(" ");
-        mirrorBST(root);
-        inorderTraversal(root);
+        Node newRoot = createBST(values, 0,6);
+        preOrderTraversal(newRoot);
+        System.out.println();
+        System.out.println(isValidBST(newRoot, null,null));
     }
 }
