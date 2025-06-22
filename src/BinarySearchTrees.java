@@ -113,13 +113,29 @@ public class BinarySearchTrees {
     }
 
 
+    //BINARY SEARCH TREES: VALIDATE BST (IS IT VALID BST OR NOT)
+    public static boolean isValidBST(Node root, Node min, Node max){
+        if (root==null)
+            return true;
+
+        if(min!=null && root.data<= min.data)
+            return false;
+        else if (max!=null && root.data>=max.data)
+            return false;
+
+        boolean RValid = isValidBST(root.right, root, max);
+        boolean LValid = isValidBST(root.left, min, root);
+
+        return RValid && LValid;
+    }
+
+
     public static void main(String args[]){
         int values[] = {5,1,3,4,2,7};
         Node root = null;
         for (int i = 0; i < values.length; i++) {
             root = insert(root,values[i]);
         }
-        ArrayList<Integer> path = new ArrayList<>();
-        printRoot2Leaf(root,path);
+        System.out.println(isValidBST(root,null,null));
     }
 }
