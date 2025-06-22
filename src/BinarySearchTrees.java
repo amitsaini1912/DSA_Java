@@ -74,6 +74,22 @@ public class BinarySearchTrees {
     }
 
 
+    //BINARY SEARCH TREES: PRINT NODES IN GIVEN RANGE IN BST
+    public static void printInRange(Node root, int k1, int k2){
+        if (root==null)
+            return;
+        if (root.data>=k1 && root.data<=k2){
+            printInRange(root.left, k1, k2);
+            System.out.print(root.data + " ");
+            printInRange(root.right, k1, k2);
+        } else if (root.data>k2) {
+            printInRange(root.left, k1, k2);
+        }else {
+            printInRange(root.right, k1, k2);
+        }
+    }
+
+
     public static void main(String args[]){
         int values[] = {5,1,3,4,2,7};
         Node root = null;
@@ -83,7 +99,6 @@ public class BinarySearchTrees {
         }
         inorderTraversal(root);
         System.out.println(" ");
-        delete(root,5);
-        inorderTraversal(root);
+        printInRange(root, 2,4);
     }
 }
