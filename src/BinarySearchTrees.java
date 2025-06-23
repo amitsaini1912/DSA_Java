@@ -194,6 +194,43 @@ public class BinarySearchTrees {
         return createBST2(inOrderSec, 0, inOrderSec.size()-1);
     }
 
+
+    //BINARY SEARCH TREES: SIZE OF LARGEST BST IN BT
+    static class Info{
+        boolean isBST;
+        int size;
+        int min;
+        int max;
+        public Info(boolean isBST, int size, int min, int max){
+            this.isBST = isBST;
+            this.size = size;
+            this.min = min;
+            this.max = max;
+        }
+    }
+    public static int maxBST = 0;
+    public static Info largestBST(Node root){
+        if (root==null)
+            return new Info(false, 0, Integer.MAX_VALUE, Integer.MIN_VALUE);
+
+        Info leftInfo = largestBST(root.left);
+        Info righInfo = largestBST(root.right);
+        int size = leftInfo.size+righInfo.size+1;
+        int min = Math.min(Math.min(leftInfo.min, righInfo.min), root.data);
+        int max = Math.max(Math.max(leftInfo.max, righInfo.max), root.data);
+
+        if(leftInfo.max<root.data || righInfo.min>=root.data)
+            return new Info(false, size, min, max);
+
+        if (leftInfo.isBST && righInfo.isBST){
+            maxBST = Math.max(maxBST, size);
+            return new Info(true, size, min, max);
+        }
+
+        return new Info(false, size, min, max);
+    }
+
+
     public static void main(String args[]){
         int values[] = {3,5,6,8,10,11,12};
         Node root = null;
