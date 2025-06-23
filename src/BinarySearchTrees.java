@@ -231,13 +231,64 @@ public class BinarySearchTrees {
     }
 
 
-    public static void main(String args[]){
-        int values[] = {3,5,6,8,10,11,12};
-        Node root = null;
-        for (int i = 0; i < values.length; i++) {
-            root = insert(root,values[i]);
+    //BINARY SEARCH TREES: MERGE 2 BST's IN BALANCED FORM
+    public static Node mergeBST(Node root1, Node root2){
+        ArrayList<Integer> arr1 = new ArrayList<>();
+        findInOrderSec(root1, arr1);
+        ArrayList<Integer> arr2 = new ArrayList<>();
+        findInOrderSec(root2, arr2);
+
+        //merge arr1 nd arr2
+        ArrayList<Integer> finalArr = new ArrayList<>();
+        int i=0, j=0;
+        while (i<arr1.size() && j<arr2.size()){
+            if (arr1.get(i)<=arr2.get(j)){
+                finalArr.add(arr1.get(i));
+                i++;
+            }else{
+                finalArr.add(arr2.get(j));
+                j++;
+            }
         }
-        Node newRoot = balancedBST(root);
+        while (i<arr1.size()){
+            finalArr.add(arr1.get(i));
+            i++;
+        }
+        while (j<arr2.size()){
+            finalArr.add(arr2.get(j));
+            j++;
+        }
+
+        //create BST with finalArr (Sorted)
+        return createBST2(finalArr, 0, finalArr.size()-1);
+    }
+
+
+    public static void main(String args[]){
+//        int values[] = {1,2,4};
+//        Node root = null;
+//        for (int i = 0; i < values.length; i++) {
+//            root = insert(root,values[i]);
+//        }
+        Node root1 = new Node(2);
+        root1.left = new Node(1);
+        root1.right = new Node(4);
+
+        Node root2 = new Node(9);
+        root2.left = new Node(3);
+        root2.right = new Node(12);
+
+        /*       3
+                / \
+               1   4
+               \    \
+                2    9
+                      \
+                       12
+
+         */
+
+        Node newRoot = mergeBST(root1, root2);
         preOrderTraversal(newRoot);
     }
 }
