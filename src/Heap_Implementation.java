@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.PriorityQueue;
+
 public class Heap_Implementation {
 
     //HEAP : HEAP IMPLEMENTATION USING ARRAYLIST
@@ -110,9 +112,37 @@ public class Heap_Implementation {
         }
     }
 
-
+    //HEAP: NEARBY CARS PROBLEM
+    static class Point implements Comparable<Point>{
+        int x;
+        int y;
+        int dis;
+        int idx;
+        public Point(int x, int y, int dis, int idx){
+            this.x = x;
+            this.y = y;
+            this.dis = dis;
+            this.idx = idx;
+        }
+        @Override
+        public int CompareTo(Point p2){
+            return this.dis - p2.dis;
+        }
+    }
+    public static void nearbyCars(PriorityQueue<Point> pq, int arr[][], int k){
+        for (int i = 0; i < arr.length; i++) {
+            int dis = arr[i][0]*arr[i][0] + arr[i][1]*arr[i][1];
+            pq.add(new Point(arr[i][0], arr[i][1], dis, i));
+        }
+        for (int i = 0; i < k; i++) {
+            System.out.println(pq.remove().idx);
+        }
+    }
 
     public static void main(String args[]) {
+
+
+
         Heap h = new Heap();
         h.add(2);
         h.add(3);
