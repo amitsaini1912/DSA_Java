@@ -139,8 +139,34 @@ public class HashMap_Implementation {
         }
 
     }
+
+
+    //HASHING [HASHMAP]: MAJORITY ELEMENT PROBLEM
+    public static void majorityEle(){
+        int arr[] = {1,2,1,3,2,1,4,5,1};
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (hm.containsKey(arr[i])){
+                hm.put(arr[i], hm.get(arr[i]+1));
+            }else{
+                hm.put(arr[i], 1);
+            }
+        }
+        Set<Integer> keys = (Set<Integer>) hm.keySet();
+
+        for(Integer k: keys){
+            if (hm.get(k) > arr.length/3){
+                System.out.println(k);
+            }
+        }
+    }
+
+
     public static void main(String args[]){
-         HashMap<String, Integer> hm = new HashMap<>();
+
+        majorityEle();
+
+        HashMap<String, Integer> hm = new HashMap<>();
          hm.put("India", 100);
          hm.put("Chine", 150);
          hm.put("US", 50);
