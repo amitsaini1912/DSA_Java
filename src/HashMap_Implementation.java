@@ -1,6 +1,6 @@
 import java.util.*;
 public class HashMap_Implementation {
-    static class HashMap<K,V>{//Generic
+    static class HashMap<K,V>{//Generic - bcz key and value datatype will be defined on constructor call
         private class Node{
             K key;
             V value;
@@ -11,24 +11,25 @@ public class HashMap_Implementation {
             }
         }
 
-        private int n; //size
+        private int n; //size - total no of nodes
         private int N;
-        private LinkedList<Node> Buckets[]; //N
+        private LinkedList<Node> Buckets[]; //N - Array of LinkedLists
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings("unchecked") //In some versions of java we can't create empty bucket of linkedList without declaring datatype
         public HashMap(){
             this.N = 4;
-            this.Buckets = new LinkedList[4];
+            this.Buckets = new LinkedList[4]; //Bucket Created
             for(int i=0; i<4; i++){
-                this.Buckets[i] = new LinkedList<>();
+                this.Buckets[i] = new LinkedList<>(); //LinkedList created at each bucket index
             }
         }
 
+        //Hash Function
         private int hashFunction(K key){
-            int hc = key.hashCode();
-            return Math.abs(hc) % N;
+            int hc = key.hashCode(); //hashCode() function is inbuild and return a hashCode for a given key
+            return Math.abs(hc) % N; // to find idx we take modulo with size on abs value
         }
-
+        // Search on LinkedList
         private int SearchInLL(K key, int bi){
             LinkedList<Node> ll = Buckets[bi];
             int di = 0;
@@ -42,7 +43,7 @@ public class HashMap_Implementation {
             }
             return -1;
         }
-
+        //Rehash function
         private void rehash(){
             LinkedList<Node> oldBuck[] = Buckets;
             Buckets = new LinkedList[N*2];
@@ -60,6 +61,8 @@ public class HashMap_Implementation {
                 }
             }
         }
+
+        //Put function to add
         public void put(K key, V value){ //O(lambda) -> O(1)
             int bi = hashFunction(key);
             int di = SearchInLL(key, bi);
@@ -78,6 +81,7 @@ public class HashMap_Implementation {
             }
         }
 
+        //Contains Key Function
         public boolean containsKey(K key){ //O(1)
             int bi = hashFunction(key);
             int di = SearchInLL(key, bi);
@@ -89,6 +93,7 @@ public class HashMap_Implementation {
             }
         }
 
+        //Remove function
         public V remove(K key){ //O(1)
             int bi = hashFunction(key);
             int di = SearchInLL(key, bi);
@@ -102,6 +107,7 @@ public class HashMap_Implementation {
             }
         }
 
+        //Get function
         public V get(K key){ //O(1)
             int bi = hashFunction(key);
             int di = SearchInLL(key, bi);
@@ -114,6 +120,7 @@ public class HashMap_Implementation {
             }
         }
 
+        //keySet function to store keys in a Arraylist
         public ArrayList<K> keySet(){
             ArrayList<K> keys = new ArrayList<>();
 
@@ -126,12 +133,12 @@ public class HashMap_Implementation {
             return keys;
         }
 
+        //isEmpty Function
         public boolean isEmpty(){
             return n==0;
         }
 
     }
-
     public static void main(String args[]){
          HashMap<String, Integer> hm = new HashMap<>();
          hm.put("India", 100);
@@ -141,8 +148,9 @@ public class HashMap_Implementation {
 
          ArrayList<String> keys = hm.keySet();
          for (String key : keys){
-             System.out.println(key);
+             System.out.print(key + ", ");
          }
+        System.out.println(" ");
 
         System.out.println(hm.get("India"));
         System.out.println(hm.remove("India"));
