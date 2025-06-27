@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Graphs_Basic {
 
@@ -42,6 +44,25 @@ public class Graphs_Basic {
     }
 
 
+    //BFS (BREADTH FIRST SEARCH)
+    public static void bfs(ArrayList<Edge>[] graph){
+        Queue<Integer> q = new LinkedList<>();
+        boolean visit[] = new boolean[graph.length];
+
+        q.add(0);
+
+        while (!q.isEmpty()){
+            int curr = q.remove();
+            if (!visit[curr]){
+                System.out.print(curr + " ");
+                visit[curr] = true;
+                for (int i = 0; i < graph[curr].size(); i++) {
+                    Edge e = graph[curr].get(i);
+                    q.add(e.dest);
+                }
+            }
+        }
+    }
 
     public static void main(String[] args){
         /*
@@ -60,10 +81,6 @@ public class Graphs_Basic {
 
         createGraph(graph);
 
-        //Print Neighbors of Vertex 2
-        for (int i = 0; i < graph[2].size(); i++) {
-            Edge e = graph[2].get(i);
-            System.out.print(e.dest + " ");
-        }
+        bfs(graph);
     }
 }
