@@ -64,6 +64,22 @@ public class Graphs_Basic {
         }
     }
 
+
+    //DFS (DEPTH FIRST SEARCH) - RECURSION
+    public static void dfs(ArrayList<Edge>[] graph, int curr, boolean[] vis){
+
+        System.out.print(curr+ " "); //print curr
+        vis[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) { //loop on neighbors of curr
+            Edge e = graph[curr].get(i); //find neighbors
+            if(!vis[e.dest]){ //visit is not true then
+                dfs(graph, e.dest, vis); //Recursive call for neighbors
+            }
+        }
+    }
+
+
     public static void main(String[] args){
         /*
              0 ------------ 1
@@ -78,9 +94,11 @@ public class Graphs_Basic {
          */
         int V = 5; // No. of Total Nodes
         ArrayList<Edge>[] graph = new ArrayList[V];
+        boolean vis[] = new boolean[V];
 
         createGraph(graph);
 
         bfs(graph);
+        dfs(graph, 0, vis);
     }
 }
