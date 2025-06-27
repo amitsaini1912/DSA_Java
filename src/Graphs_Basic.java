@@ -80,6 +80,25 @@ public class Graphs_Basic {
     }
 
 
+    //WEATHER A GRAPH HASH PATH OR NOT FROM SRC TO DEST PROBLEM
+    public static boolean hashPath(ArrayList<Edge>[] graph, int src, int dest, boolean[] vis){
+        //base case
+        if(src == dest) return true;
+
+        vis[src] = true; //make src in visit true
+
+        for (int i = 0; i < graph[src].size(); i++) {
+            //find neighbors of src
+            Edge e = graph[src].get(i);
+            //if neighbor not visited true and (Recursive) also not visited return true
+            if (!vis[e.dest] && hashPath(graph, e.dest, dest, vis)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     public static void main(String[] args){
         /*
              0 ------------ 1
@@ -98,7 +117,6 @@ public class Graphs_Basic {
 
         createGraph(graph);
 
-        bfs(graph);
-        dfs(graph, 0, vis);
+        System.out.println(hashPath(graph, 0, 4, vis));
     }
 }
