@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e10908c3-9ba7-404e-a23a-e51efb0aa4b9" name="Changes" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/src/Tries.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Graphs_Basic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +50,7 @@
     "Application.Bits.executor": "Run",
     "Application.Conditional_std.executor": "Run",
     "Application.Conditionalst.executor": "Run",
+    "Application.Graphs_Basic.executor": "Run",
     "Application.Greedy_Algorithms.executor": "Run",
     "Application.HashMap_Implementation.executor": "Run",
     "Application.HashingClass.executor": "Run",
