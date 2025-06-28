@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Graphs {
     static class Edge{
@@ -164,6 +165,38 @@ public class Graphs {
     }
 
 
+    //GRAPHS: CYCLE DETECTION IN DIRECTED GRAPH USING DFS + Explicit Recursion Stack
+    public static boolean isCycle(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        boolean stack[] = new boolean[graph.length];
+
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]){
+                boolean isTrue = isCycleUtil(graph, i, vis, stack);
+                if (isTrue)
+                    return true;
+            }
+        }
+        return false;
+    }
+    public static boolean isCycleUtil(ArrayList<Edge>[] graph, int curr, boolean[] vis, boolean[] stack){
+
+        vis[curr] = true;
+        stack[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            if(stack[e.dest] == true)
+                return true;
+            if (!vis[e.dest] && isCycleUtil(graph, e.dest, vis, stack)){
+                return true;
+            }
+        }
+        stack[curr] = false;
+
+        return false;
+    }
+
     public static void main(String[] args){
         /*
                 1 --- 3
@@ -179,7 +212,7 @@ public class Graphs {
 
         createGraph(graph);
 
-        System.out.println(isBipartite(graph));
+        System.out.println(isCycle(graph));
 
     }
 }
