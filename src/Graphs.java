@@ -122,6 +122,48 @@ public class Graphs {
         return false;
     }
 
+
+    //GRAPHS: WEATHER A GRAPH BIPARTITE OR NOT USING BFS AND GRAPH COLORING
+    public static boolean isBipartite(ArrayList<Edge>[] graph){
+        int col[] = new int[graph.length];
+        for (int i = 0; i < col.length; i++) {
+            col[i] = -1;
+        }
+
+        for (int i = 0; i < graph.length; i++) {
+            if (col[i]==-1){
+                boolean isTrue = isBipartiteUitl(graph, i, col);
+                if (!isTrue)
+                    return false;
+            }
+        }
+        return true;
+    }
+    public static boolean isBipartiteUitl(ArrayList<Edge>[] graph, int i, int[] col){
+        Queue<Integer> q = new LinkedList<>();
+        q.add(i);
+        col[i] = 1;
+        while (!q.isEmpty()){
+            int curr = q.remove();
+            //find neighbors of curr
+            for (int j = 0; j < graph[curr].size(); j++) {
+                Edge e = graph[curr].get(j);
+                //case 1 if neighbor not have color
+                if (col[e.dest]==-1) {
+                    int nextCol = col[curr] == 0 ? 1 : 0;
+                    col[e.dest] = nextCol;
+                    q.add(e.dest);
+                }
+                //case 2 neighbor and curr have same color
+                else if (col[e.dest]==col[curr]) {
+                    return false;  //Not Bipartite
+                }
+            }
+        }
+        return true;
+    }
+
+
     public static void main(String[] args){
         /*
                 1 --- 3
@@ -137,7 +179,7 @@ public class Graphs {
 
         createGraph(graph);
 
-        System.out.println(detectCycle(graph));
+        System.out.println(isBipartite(graph));
 
     }
 }
