@@ -197,6 +197,34 @@ public class Graphs {
         return false;
     }
 
+
+    //GRAPHS: TOPOLOGICAL SORTING FOR DAG's (Directed Acyclic Graphs)
+    public static void topSort(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        Stack<Integer> s = new Stack<>();
+
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]){
+                topSortUtil(graph, i, vis, s);
+            }
+        }
+
+        while (!s.isEmpty()){
+            System.out.print(s.peek()+" ");
+            s.remove(s.peek());
+        }
+    }
+    public static void topSortUtil(ArrayList<Edge>[] graph, int curr, boolean[] vis, Stack<Integer> s){
+        vis[curr] = true;
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            if (!vis[e.dest])
+                topSortUtil(graph, e.dest, vis, s);
+        }
+        s.add(curr);
+    }
+
+
     public static void main(String[] args){
         /*
                 1 --- 3
@@ -212,7 +240,7 @@ public class Graphs {
 
         createGraph(graph);
 
-        System.out.println(isCycle(graph));
+        topSort(graph);
 
     }
 }
