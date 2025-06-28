@@ -91,6 +91,37 @@ public class Graphs {
         }
     }
 
+
+    //GRAPHS: CYCLE DETECTION IN UNDIRECTED GRAPH USING DFS
+    public static boolean detectCycle(ArrayList<Edge> [] graph){
+        boolean vis[] = new boolean[graph.length];
+        for (int i = 0; i < graph.length; i++) {
+            if (!vis[i]){
+                if (detectCycleUtil(graph,vis,i,-1))
+                    return true;
+            }
+        }
+        return false;
+    }
+    public static boolean detectCycleUtil(ArrayList<Edge>[] graph, boolean[] vis, int curr, int par){
+        vis[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            //case 3
+            if(!vis[e.dest]){
+                if (detectCycleUtil(graph, vis, e.dest, curr))
+                    return true;
+            }
+            //case 1
+            else if (vis[e.dest] && e.dest != curr) { //here curr is parent for e.dest
+                return true;
+            }
+            //case 2 continue loop
+        }
+        return false;
+    }
+
     public static void main(String[] args){
         /*
                 1 --- 3
@@ -106,7 +137,7 @@ public class Graphs {
 
         createGraph(graph);
 
-        dfs(graph);
+        System.out.println(detectCycle(graph));
 
     }
 }
