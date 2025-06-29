@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Graphs {
     static class Edge{
@@ -258,6 +255,53 @@ public class Graphs {
         }
     }
 
+    //GRAPHS: DIJKSTRAS's ALGORITHM To FIND SHORTEST PATH FROM SOURCE TO ALL VERTICES [Uses BFS With PQ]
+    static class Pair implements Comaparable<Pair>{
+        int n;
+        int path;
+        public Pair(int n, int path){
+            this.path = path;
+            this.n=n;
+        }
+        @Override
+        public int compareTo(Pair p2){
+            return this.path - p2.path;
+        }
+    }
+    public static void dijkstra(ArrayList<Edge>[] graph, int src){
+        int dist[] = new int[graph.length];
+        for (int i = 0; i < dist.length; i++) {
+            if(i != src)
+                dist[i] = Integer.MAX_VALUE;
+        }
+
+        boolean vis[] = new boolean[graph.length];
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        pq.add(new Pair(src, 0));
+
+        while (!pq.isEmpty()){
+            Pair curr = pq.remove();
+            if (!vis[curr.n]){
+                vis[curr.n] = true;
+                for (int i = 0; i < graph[curr.n].size(); i++) {
+                    Edge e = graph[curr.n].get(i);
+                    int u = e.src;
+                    int v = e.dest;
+                    int wt = e.weight;
+
+                    if (dist[u]+wt < dist[v]){
+                        dist[v] = dist[u]+wt;
+                        pq.add(new Pair(e.dest, dist[v]));
+                    }
+                }
+            }
+        }
+
+        for (int i = 0; i < dist.length; i++) {
+            System.out.println(dist[i]+ " ");
+        }
+    }
+
     public static void main(String[] args){
 
         int V = 6; // No. of Total Nodes
@@ -266,7 +310,7 @@ public class Graphs {
 
         createGraph(graph);
 
-        printAllPath(graph, 5, 1, "");
+        dijkstra(graph, 5);
 
     }
 }
