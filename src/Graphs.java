@@ -19,28 +19,16 @@ public class Graphs {
             graph[i] = new ArrayList<>();//Assign a ArrayList at each idx
         }
 
-        graph[0].add(new Edge(0,1,1));
-        graph[0].add(new Edge(0,2,1));
-
-        graph[1].add(new Edge(1,0,1));
-        graph[1].add(new Edge(1,3,1));
-
-        graph[2].add(new Edge(2,0,1));
-        graph[2].add(new Edge(2,4,1));
+        graph[2].add(new Edge(2,3,1));
 
         graph[3].add(new Edge(3,1,1));
-        graph[3].add(new Edge(3,4,1));
-        graph[3].add(new Edge(3,5,1));
 
-        graph[4].add(new Edge(4,2,1));
-        graph[4].add(new Edge(4,3,1));
-        graph[4].add(new Edge(4,5,1));
+        graph[4].add(new Edge(4,0,1));
+        graph[4].add(new Edge(4,1,1));
 
-        graph[5].add(new Edge(5,3,1));
-        graph[5].add(new Edge(5,4,1));
-        graph[5].add(new Edge(5,6,1));
+        graph[5].add(new Edge(5,0,1));
+        graph[5].add(new Edge(5,2,1));
 
-        graph[6].add(new Edge(6,5,1));
     }
 
 
@@ -225,22 +213,48 @@ public class Graphs {
     }
 
 
-    public static void main(String[] args){
-        /*
-                1 --- 3
-               /      | \
-              0       |   5 -- 6
-               \      |  /
-                2 --- 4
+    //GRAPHS: TOPOLOGICAL SORT FOR DAG's [Using KAHN's ALGORITHM] - BFS
+    public static void calcIndeg(ArrayList<Edge>[] graph, int [] indeg){
+        for (int i = 0; i < graph.length; i++) {//To traverse connected components of a graph
+            for (int j = 0; j < graph[i].size(); j++) {
+                Edge e = graph[i].get(j);
+                indeg[e.dest]++;
+            }
+        }
+    }
+    public static void KahnsTopSort(ArrayList<Edge>[] graph){
+        int inDeg[] = new int[graph.length];
+        calcIndeg(graph, inDeg);
+        Queue<Integer> q = new LinkedList<>();
 
-         */
-        int V = 7; // No. of Total Nodes
+        for (int i = 0; i < inDeg.length; i++) {
+            if (inDeg[i]==0)
+                q.add(i); //Add all vertices that have inDegree 0
+        }
+
+        while (!q.isEmpty()){
+            int curr = q.remove();
+            System.out.print(curr+" "); //Topological Sort Print
+            for (int i = 0; i < graph[curr].size(); i++) {
+                Edge e = graph[curr].get(i);
+                inDeg[e.dest]--;
+                if(inDeg[e.dest]==0)
+                   q.add(e.dest);
+            }
+        }
+    }
+
+
+
+    public static void main(String[] args){
+
+        int V = 6; // No. of Total Nodes
         ArrayList<Edge>[] graph = new ArrayList[V];
         boolean vis[] = new boolean[V];
 
         createGraph(graph);
 
-        topSort(graph);
+        KahnsTopSort(graph);
 
     }
 }
