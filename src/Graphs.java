@@ -380,6 +380,31 @@ public class Graphs {
     }
 
 
+    //GRAPHS: PRIM's ALGORITHM - TO FIND MINIMUM COST SPANNING TREE
+    public static void prims(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        pq.add(new Pair(0,0));
+
+        int finalCost = 0;
+
+        while(!pq.isEmpty()){
+            Pair curr = pq.remove();
+            if (!vis[curr.n]){
+                vis[curr.n] = true;
+                finalCost += curr.path;
+
+                for (int i = 0; i < graph[curr.n].size(); i++) {
+                    Edge e = graph[curr.n].get(i);
+                    pq.add(new Pair(e.dest, e.weight));
+                }
+            }
+        }
+
+        System.out.println("Final MST Cost = "+ finalCost);
+    }
+
+
     public static void main(String[] args){
 
         int V = 5; // No. of Total Nodes
@@ -388,11 +413,7 @@ public class Graphs {
 
         createGraph(graph);
 
-        bellmanFord(graph, 0);
-
-        ArrayList<Edge> edges = new ArrayList<>();
-        createGraph2(edges);
-        bellmanFordV2(edges, 0, 5);
+        prims(graph);
 
     }
 }
