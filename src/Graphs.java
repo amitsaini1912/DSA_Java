@@ -335,17 +335,64 @@ public class Graphs {
         }
         System.out.println();
     }
+    //Bellman Ford V2
+    public static void createGraph2(ArrayList<Edge> graph){
+
+        graph.add(new Edge(0,1,2));
+        graph.add(new Edge(0,2,4));
+
+        graph.add(new Edge(1,2,-4));
+
+        graph.add(new Edge(2,3,2));
+
+        graph.add(new Edge(3,4,4));
+
+        graph.add(new Edge(4,1,-1));
+
+    }
+    public static void bellmanFordV2 (ArrayList<Edge> graph, int src, int V){
+        int dist[] = new int[V];
+        for (int i = 0; i < dist.length; i++) {
+            if(i!=src){
+                dist[i] = Integer.MAX_VALUE;
+            }
+        }
+
+
+        //Algo - O(V*E)
+        for (int i = 0; i < V-1; i++) {
+            //find edges of graph - O(E)
+            for (int k = 0; k < graph.size(); k++) {
+                Edge e = graph.get(k);
+                int u = e.src;
+                int v = e.dest;
+                int wt = e.weight;
+                //Relaxation Step
+                if (dist[u]!=Integer.MAX_VALUE && dist[u]+wt<dist[v])
+                    dist[v]=dist[u]+wt;
+            }
+        }
+        //Print Dist Array
+        for (int i = 0; i < dist.length; i++) {
+            System.out.print(dist[i] + " ");
+        }
+        System.out.println();
+    }
 
 
     public static void main(String[] args){
 
-        int V = 6; // No. of Total Nodes
+        int V = 5; // No. of Total Nodes
         ArrayList<Edge>[] graph = new ArrayList[V];
         boolean vis[] = new boolean[V];
 
         createGraph(graph);
 
         bellmanFord(graph, 0);
+
+        ArrayList<Edge> edges = new ArrayList<>();
+        createGraph2(edges);
+        bellmanFordV2(edges, 0, 5);
 
     }
 }
