@@ -16,15 +16,16 @@ public class Graphs {
             graph[i] = new ArrayList<>();//Assign a ArrayList at each idx
         }
 
-        graph[2].add(new Edge(2,3,1));
+        graph[0].add(new Edge(0,1,2));
+        graph[0].add(new Edge(0,2,4));
 
-        graph[3].add(new Edge(3,1,1));
+        graph[1].add(new Edge(1,2,-4));
 
-        graph[4].add(new Edge(4,0,1));
-        graph[4].add(new Edge(4,1,1));
+        graph[2].add(new Edge(2,3,2));
 
-        graph[5].add(new Edge(5,0,1));
-        graph[5].add(new Edge(5,2,1));
+        graph[3].add(new Edge(3,4,4));
+
+        graph[4].add(new Edge(4,1,-1));
 
     }
 
@@ -302,6 +303,40 @@ public class Graphs {
         }
     }
 
+
+    //GRAPHS: BELLMAN FORD ALGORITHM To FIND SHORTEST PATH FROM SOURCE TO ALL VERTICES  [FOR NEGATIVE EDGES]
+    public static void bellmanFord(ArrayList<Edge>[] graph, int src){
+        int dist[] = new int[graph.length];
+        for (int i = 0; i < dist.length; i++) {
+            if(i!=src){
+                dist[i] = Integer.MAX_VALUE;
+            }
+        }
+
+        int V = graph.length;;
+        //Algo - O(V*E)
+        for (int i = 0; i < V-1; i++) {
+            //find edges of graph - O(E)
+            for (int j = 0; j < graph.length; j++) {
+                for (int k = 0; k < graph[j].size(); k++) {
+                    Edge e = graph[j].get(k);
+                    int u = e.src;
+                    int v = e.dest;
+                    int wt = e.weight;
+                    //Relaxation Step
+                    if (dist[u]!=Integer.MAX_VALUE && dist[u]+wt<dist[v])
+                        dist[v]=dist[u]+wt;
+                }
+            }
+        }
+        //Print Dist Array
+        for (int i = 0; i < dist.length; i++) {
+            System.out.print(dist[i] + " ");
+        }
+        System.out.println();
+    }
+
+
     public static void main(String[] args){
 
         int V = 6; // No. of Total Nodes
@@ -310,7 +345,7 @@ public class Graphs {
 
         createGraph(graph);
 
-        dijkstra(graph, 5);
+        bellmanFord(graph, 0);
 
     }
 }
