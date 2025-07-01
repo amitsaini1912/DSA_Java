@@ -13,12 +13,26 @@ public class DP_Basics {
         return dp[n];
     }
 
+    //Dynamic Programing: Fibonacci Series Using Iterative Tabulation
+    public static int fibT(int n){
+        //step1 Initialization
+        int dp[] = new int[n+1];
+        dp[0] = 0;  //that is for c++ bcz in java it will automatic initialize all idx with 0
+        dp[1] = 1;
+
+        //step2 - Calculations (Filling)
+        for (int i = 2; i <= n; i++) {
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+
+        return dp[n];
+    }
 
     public static void main(String args[]){
 
         int n = 5;
         int dp[] = new int[n+1];
-        System.out.println(fib(n, dp));
+        System.out.println(fibT(n));
     }
 
 }
