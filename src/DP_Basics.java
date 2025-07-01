@@ -28,11 +28,30 @@ public class DP_Basics {
         return dp[n];
     }
 
+
+    //DYNAMIC PROGRAMING: CLIMBING STAIRS - RECURSION MEMOIZATION
+    public static int climbStair(int n, int[] dp){
+        if (n==0 || n==1){
+           return 1;
+        }
+        if (n == 2) { //Extra pre-calc if u want include otherwise not
+            return 2;
+        }
+
+        if(dp[n]!=0){
+            return dp[n];
+        }
+
+        dp[n] = climbStair(n-1, dp) + climbStair(n-2, dp);
+        return dp[n];
+    }
+
+
     public static void main(String args[]){
 
         int n = 5;
         int dp[] = new int[n+1];
-        System.out.println(fibT(n));
+        System.out.println(climbStair(n, dp));
     }
 
 }
