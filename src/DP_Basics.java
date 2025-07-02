@@ -65,11 +65,29 @@ public class DP_Basics {
     }
 
 
-    public static void main(String args[]){
 
-        int n = 5;
-        int dp[] = new int[n+1];
-        System.out.println(climbStairT(n));
+    //DYNAMIC PROGRAMING: 0-1 KNAPSACK USING RECURSION - O(2^N)
+    public static int knapsack(int val[], int wt[], int W, int n){
+        if(W==0 || n==0){ //n is idx of val array - traversing from last
+            return 0;
+        }
+
+        if(wt[n-1]<=W){ //item can be added in knapsack
+            int ans1 = val[n-1] + knapsack(val, wt, W-wt[n-1], n-1); //include condition - (1)
+            int ans2 = knapsack(val, wt, W, n-1); // exclude condition - (0)
+            return Math.max(ans1,ans2);
+        }else { //item not added in knapsack
+            return knapsack(val, wt, W, n-1);
+        }
+    }
+
+
+    public static void main(String args[]){
+        int val[] = {15,14,10,45,30};
+        int wt[] = {2,5,1,3,4};
+        int W = 7;
+        int n = val.length;
+        System.out.println(knapsack(val, wt, W, n));
     }
 
 }
