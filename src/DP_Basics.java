@@ -81,13 +81,39 @@ public class DP_Basics {
         }
     }
 
+    //DYNAMIC PROGRAMING: 0-1 KNAPSACK USING MEMOIZATION - O(n*W)
+    public static int knapsackM(int val[], int wt[], int W, int n, int dp[][]){
+        if(W==0 || n==0){ //n is idx of val array - traversing from last
+            return 0;
+        }
+
+        if(dp[n][W]!=-1){
+            return dp[n][W];
+        }
+
+        if(wt[n-1]<=W){ //item can be added in knapsack
+            int ans1 = val[n-1] + knapsackM(val, wt, W-wt[n-1], n-1, dp); //include condition - (1)
+            int ans2 = knapsackM(val, wt, W, n-1, dp); // exclude condition - (0)
+            dp[n][W] = Math.max(ans1,ans2);
+            return dp[n][W];
+        }else { //item not added in knapsack
+            dp[n][W] = knapsackM(val, wt, W, n-1, dp);
+            return dp[n][W];
+        }
+    }
 
     public static void main(String args[]){
         int val[] = {15,14,10,45,30};
         int wt[] = {2,5,1,3,4};
         int W = 7;
         int n = val.length;
-        System.out.println(knapsack(val, wt, W, n));
+        int dp[][] = new int[n+1][W+1];
+        for (int i = 0; i < dp.length; i++) {
+            for (int j = 0; j < dp[0].length; j++) {
+                dp[i][j] = -1;
+            }
+        }
+        System.out.println(knapsackM(val, wt, W, n, dp));
     }
 
 }
