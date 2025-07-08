@@ -281,20 +281,31 @@ public class Dynamic_Programming {
     }
 
 
-    public static void main(String args[]){
-        String str1 = "abc";
-        String str2 = "**d";
-        int n = str1.length();
-        int m = str2.length();
+    //DYNAMIC PROGRAMING: MCM (MATRIX CHAIN MULTIPLICATION) - RECURSION -> O(2^N)
+    public static int mcm(int arr[], int i, int j){
+        if (i==j)
+            return 0;
 
-        int dp[][] = new int[n+1][m+1];
-        for (int i = 0; i < dp.length; i++) {
-            for (int j = 0; j < dp[0].length; j++) {
-                dp[i][j] = -1;
-            }
+        int minCost = Integer.MAX_VALUE;
+        for (int k = i; k <= j-1; k++) {
+            int cost1 = mcm(arr, i, k); //Ai...Ak  -> size = arr[i-1] * arr[k]
+            int cost2 = mcm(arr, k+1, j); //Ai+1...Aj  -> size = arr[k] * arr[j]
+
+            int cost3 = arr[i-1] * arr[k] * arr[j]; //cost of two matrices of sizes (a*b and b*d) is a*b*d
+
+            int finalCost = cost1 + cost2 + cost3;
+            minCost = Math.min(finalCost, minCost);
         }
 
-        System.out.println(isMatch(str1, str2));
+        return minCost;
+    }
+
+
+    public static void main(String args[]){
+        int arr[] = {1,2,3,4,3};
+        int n = arr.length;
+
+        System.out.println(mcm(arr,1,n-1));
     }
 
 }
