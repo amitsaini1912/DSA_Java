@@ -1,7 +1,7 @@
-# 💻 DSA Practice
+# 💻 Alpha - Java + DSA
 
-Welcome to my **DSA (Data Structures and Algorithms) Practice Repository**!  
-Here, I solve and push problems from platforms like **LeetCode**, **GeeksforGeeks**, **CodeStudio**, and more, using language JAVA.
+DSA (Data Structures and Algorithms) Learning repository!  
+Here, I solve and Learn concepts from Alpha DSA batch (Tutor - Shardha Khapara) , using language JAVA.
 
 ---
 
@@ -9,7 +9,7 @@ Here, I solve and push problems from platforms like **LeetCode**, **GeeksforGeek
 
 This repository is created to:
 
-- 💡 Sharpen problem-solving skills
+- 💡 Learn DSA conceps and sharpning skills
 - 🧠 Build a strong foundation in data structures and algorithms
 - 🔁 Develop consistency through practice
 - 💼 Prepare for technical interviews and coding rounds
@@ -53,7 +53,7 @@ This repository is created to:
 
 - Language: `Java`
 - IDE: IntelliJ IDEA
-- Platforms: LeetCode, GeeksforGeeks, InterviewBit, CodeStudio
+- Platforms: APNA COLLEGE
 
 ---
 
